@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>AnnieCannons Advanced JavaScript slides</title>
+
+    <meta name="description" content="AnnieCannons class slides">
+    <meta name="author" content="AnnieCannons">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="icon" type="image/png" href="images/AC_Asterisk.png">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+        <section>
+            <h1>Advanced JavaScript</h1>
+        </section>
+
+        <section>
+            <h2>Advanced JavaScript Review Study Guide</h2>
+            <p>Click <a href="https://docs.google.com/document/d/1E4_KM-tErWe7sCfVpfT6-ecGC6416-bZE7sHL-6DntI/edit?usp=sharing" target="_blank">here</a> to view and make a copy for reference.</p>
+        </section>
+
+        <section>
+            <h2>JavaScript's Two Main Roles</h2>
+            <ol>
+                <li class="fragment">DATA: Retrieve, Change, and Store Data</li>
+                <li class="fragment">UI: Change how the UI looks based on the data or based on what the user is doing.</li>
+            </ol>
+            <p class="fragment">As we have previously learned, jQuery is one way that helps us with #2 via DOM selection and methods.</p>
+            <p class="fragment">In this Advanced JavaScript course, we will explore methods built into JavaScript to help with #1.</p>
+            <div class="fragment">
+                <img data-enlargable style="height: 200px; border: 5px solid blue; cursor: zoom-in;" src="images/data-sources.png" alt="Different sources of data merged together into one set of data">
+                <img data-enlargable style="border: 5px solid blue; cursor: zoom-in;" src="images/data-conversion.png" alt="filtering and displaying data">
+            </div>
+        </section>
+
+        <section>
+            <h2>Advanced JavaScript</h2>
+            <p>In this unit, we will touch on each of the five data types we first learned about using ES5 syntax.</p>
+            <ul>
+                <li>string</li>
+                <li>number</li>
+                <li>boolean</li>
+                <li>array</li>
+                <li>object</li>
+            </ul>
+            <p>In this unit, we will include ES6 syntax.</p>
+            <img data-enlargable style="width: 250px; border: 5px solid blue; cursor: zoom-in;" width="500px;" src="images/es6.png" alt="Benefits to using jQuery">
+        </section>
+
+        <section>
+            <h2>Storing Data</h2>
+            <p>When we work with data, we must store the data in our program. What do we use to store data in JavaScript?<br><span class="fragment" style="color: yellow;">Yes! Variables!</span></p>
+            <div class="fragment">
+                <p>We use <span style="color: yellow;">keywords</span> to declare our variables.<br>Let's click on each keyword to review:</p>
+                <ul>
+                    <li class="fragment"><a href="https://anniecannons.github.io/ac-intro-to-js/#/30" target="_blank"><code>var</code></a></li>
+                    <li class="fragment"><a href="https://anniecannons.github.io/ac-intro-js-functions/#/34" target="_blank"><code>let</code></a></li>
+                    <li class="fragment"><a href="https://anniecannons.github.io/ac-intro-to-js/#/96" target="_blank"><code>const</code></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Values Stored in Variables</h2>
+            <p>Variables can store any number of data types.</p>
+            <p>Practice in <a href="https://jsbin.com/?js,console" target="blank">JS Bin</a>: Declare a variable and initialize it as each of the following data types:</p>
+            <ul>
+                <li>string</li>
+                <li>number</li>
+                <li>boolean</li>
+                <li>array</li>
+                <li>object</li>
+            </ul>
+            <p>Next, let's explore what we can do in ES6 with each kind of data type.</p>
+        </section>
+
+        <section>
+            <h1>Strings</h1>
+        </section>
+
+        <section>
+            <h2>Strings as Variables</h2>
+            <p>Upto this point, you are familiar with two ways to create strings using ES5 syntax.</p>
+            <ul class="fragment">
+                <li>Using single quotes:
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var str1 = 'Hello';
+</pre></code>
+                </li>
+                <li>Using double quotes:
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var str2 = "Hello";
+</pre></code>
+                </li>
+            </ul>
+            <div class="fragment">
+                <p>ES6 adds a third way for us to create strings.</p>
+                <ul>
+                    <li>Using backticks (`):
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var str3 = `Hello`;
+</pre></code>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Review: ES5 Concatenation</h2>
+            <p>Concatenation in ES5 joins one string with another using the + sign. In <a href="https://jsbin.com/?js,console" target="blank">JS Bin</a>, create two strings, concatenate them, and log their concatenation to the console.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//This method does not involve storing the strings in variables.
+console.log("Hello" + "World");
+</pre></code>
+            <p class="fragment">Let's say you stored the above strings as well as their concatenation in each of their own variables. How would you log their concatenation to the console?</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                       
+var str1 = "Hello";
+var str2 = "World";
+var concat = str1 + str2;
+console.log(concat);
+</pre></code>
+        </section>
+
+        <section>
+            <h2>ES6 Concatenation</h2>
+            <p class="fragment">In ES6, we can use backticks (`) to concatenate.<br>Find the ` on your keyboard.</p>
+            <p class="fragment">Using backticks to replace the quotes for concatenation, please log the two strings "Hello" and "World" to the console.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//This method does not involve storing the two strings in variables.
+console.log(`Hello` + `World`); //"HelloWorld"
+</pre></code>
+            <p class="fragment">When joining strings that are only strings and not variables, the + sign can be dropped.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+console.log(`HelloWorld`); //"HelloWorld"
+</pre></code>
+            <p class="fragment">Even better: we can easily include a space between words.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+console.log(`Hello World`); //"Hello World"
+</pre></code>
+        </section>
+
+        <section>
+            <h2>String Concatenation with Variables</h2>
+            <p>Using ES6 syntax to insert or interpolate variables into a string is called <span style="color: yellow;">string interpolation</span>.</p>
+            <p class="fragment">A $ followed by curly braces { } that wrap around the variable's name permits its insertion or interpolation into a string. <span class="fragment">Example: <code style="color: aqua;">${variableName}</code></span></p>
+            <p class="fragment">String interpolation is complete when we insert the variable into a pair of backticks. Example: <code style="color: aqua;">`${variableName}`</code></p>
+            <p class="fragment">Given a <code style="color: aqua;">var name = "WeMac";</code> use backticks to log a string containing the variable to the console.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+console.log(`${name}`); //"WeMac"
+</pre></code>
+        </section>
+
+        <section>
+            <h2>String Interpolation</h2>
+            <p>Now that you have inserted a variable into a string, expand your string with a greeting to WeMac that reads:<br>"Hey, WeMac!"</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+console.log(`Hey, ${name}!`); //"Hey, WeMac!"
+</pre></code>
+            <p class="fragment">How would you add an additional variable? Perhaps, have the console print: "Hey, [cohort name], Class of [year]!"</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var year = 2020;
+console.log(`Hey, ${name}!, Class of ${year}!`); //"Hey, WeMac, Class of 2020!"
+</pre></code>
+            <p class="fragment">Notice that number data types inserted into strings also become strings in ES6, just like in ES5.</p>
+        </section>
+        
+        <section>
+            <h2>String Methods on Variables</h2>
+            <h3>During String Interpolation</h3>
+            <p>In ES5, we learned that there are built-in methods one can apply to strings in JavaScript. Examples are:<br><code style="color: aqua;">.slice</code>, <code style="color: aqua;">.split</code>, <code style="color: aqua;">.trim</code>.</p>
+            <p class="fragment">Using ES5 syntax in <a href="https://jsbin.com/?html,js,output" target="blank">JS Bin</a>, log "WeMac" in all caps to the console.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var caps = name.toUpperCase();
+console.log(caps + " in the house!"); //"WEMAC in the house!"
+</pre></code>
+            <p class="fragment">ES6 concatenation syntax permits the application of string methods to variables during string interpolation!</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+console.log(`${name.toUpperCase()} in the house!`); //"WEMAC in the house!"
+    </pre></code>
+        </section>
+
+        <section>
+            <h2>Strings and Functions</h2>
+            <p>Functions can accept inputs and return outputs.<br>Q: Are backticks necessary for strings as inputs?<br>
+            <span class="fragment">Q: Are backticks necessary for strings as outputs?</span><br><span class="fragment">It depends on the purpose of the function.</span></p>
+            <p class="fragment">Try: Declare a function that has a parameter for a taste that returns this statement: "How [taste]! I'd like another."</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+function flavor(taste) {
+    return `How ${taste}! I'd like another.`
+}; 
+    </pre></code>
+        <p class="fragment">Q: How do you call this function?<br>
+        <span class="fragment">Q: Did you need backticks for the string as argument?</span>
+        </section>
+
+        <section>
+            <h2>Strings and Functions Exercise</h2>
+            <p>Work on this <a href="https://codepen.io/codexmon/pen/ExyJXMm?editors=0012" target="_blank">Codepen</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+        <section>
+            <h2>Strings Galore</h2>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">documentation on MDN</a> for more ideas on how to work with strings.</p>
+        </section>
+
+        <section>
+            <h1>Numbers</h1>
+        </section>
+
+        <section>
+            <h2>Numbers as Variables</h2>
+            <p>We may be familiar with declaring variables and initializing them as numbers or operations on numbers.</p>
+            <ul class="fragment">
+                <li>integers/whole numbers: <code style="color: aqua;">var i = 0;</code></li>
+                <li>decimals/floating numbers: <code style="color: aqua;">var j = 98.6;</code></li>
+                <li>mathematical operations: <code style="color: aqua;">var k = 5 * 7;</code></li>
+            </ul>
+            <p class="fragment">We have also used variables as placeholders for numbers: <code style="color: aqua;">var l = i + j * k;</code></p>
+        </section>
+
+        <section> 
+            <h2>Numbers Review</h2>
+            <p>We have also used forms to gather user input<br>to increase user engagement.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+var age = prompt("What is your age?");
+console.log(age);
+</pre></code>
+            <p class="fragment">When you run the code and enter a number,<br>what do you see in the console?</p>   
+            <p class="fragment">What data type is it?</p>
+            <p class="fragment">How do we ensure the user's input is a number?</p>
+         </section>
+
+         <section> 
+            <h2>Review: ES5 parseInt()</h2>
+            <p>In order to get our user's input of <code style="color: aqua;">age</code> to be a number data type, we have used <code style="color: aqua;">parseInt()</code>.</p>
+            <p class="fragment"><code style="color: aqua;">parseInt()</code> is a function that accepts a parameter.</p>
+            <p class="fragment">We pass the <code style="color: aqua;">prompt()</code> function into the <code style="color: aqua;">parseInt()</code> function.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+var age = parseInt(prompt("What is your age?"));
+console.log(age);
+</pre></code>
+            <p class="fragment">When you run the code and enter a number,<br>what do you see in the console?</p>             
+            <p class="fragment">What data type is it?</p>
+            <p class="fragment">We have another option.</p>
+         </section>
+
+         <section>
+            <h2>Unary Plus (+)</h2>
+            <p>The plus sign (<code style="color: aqua;">+</code>) can be used as a unary operator.</p>
+            <p>A unary operator performs an operation on a single operand.</p>
+            <p>A unary plus (<code style="color: aqua;">+</code>) precedes the operand, meaning it is positioned before the operand: <code style="color: aqua;">+value</code></p>
+            <p>The unary plus tries to convert the operand into a number. Example: if the value is a string of "2", then it will return a number of 2.</p>
+         </section>
+
+         <section>
+            <h2>Unary Plus (+) Example</h2>
+            <p>In place of <code style="color: aqua;">parseInt()</code>, how would you use the unary plus?</p>
+            <pre><code class="js" data-trim contenteditable>
+var age = parseInt(prompt("What is your age?"));          
+          </pre></code>
+          <p class="fragment">We drop the <code style="color: aqua;">parseInt()</code> and put the unary plus (<code style="color: aqua;">+</code>) before the <code style="color: aqua;">prompt()</code>.</p>
+          <pre class="fragment"><code class="js" data-trim contenteditable>
+var age = +prompt("What is your age?");          
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>More on the Unary Plus</h2>
+            <p>When the unary plus is given different kinds of values to convert to numbers, it can return some interesting values.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
++3                                   // returns 3
++'-3'                                // returns -3
++'3.14'                              // returns 3.14
++'3'                                 // returns 3
++'0xFF'                              // returns 255
++true                                // returns 1
++'123e-5'                            // returns 0.00123
++false                               // returns 0
++null                                // returns 0
++'Infinity'                          // returns Infinity
++'infinity'                          // returns NaN
++function(val){  return val }        // returns NaN        
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Mathematical Operators in Strings</h2>
+            <p>Backticks and string interpolation allow for mathematical operations.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var a = 10;
+var b = 5;
+console.log(`It is ${a+b} days after the election.`);         
+            </pre></code>
+            <p class="fragment">The result of the mathematical operation is a number that is the sum of two numbers. It is a number data type.</p>
+            <p class="fragment">Similar to ES5 concatenation, inserting the result into a string converts the number into a string:<br><code style="color:aqua;">15</code> is converted into <code style="color:aqua;">"15"</code></p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//the console will show:
+"It is 15 days after the election."         
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Numbers and Math</h2>
+            <p><code style="color: aqua;">Math</code> is a built-in object that has properties and methods that work on number data types.</p>
+            <p>Some <code style="color: aqua;">Math</code> methods we have used are:<br><code style="color: aqua;">.random()</code>, <code style="color: aqua;">.floor()</code>, <code style="color: aqua;">.round()</code></p>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">documentation on MDN</a> for more ideas on how to use <code style="color: aqua;">Math</code> to work with numbers.</p>
+        </section>
+
+        <section>
+            <h2>Numbers and Functions Exercise</h2>
+            <p>Work on this Birthday Probability<a href="https://codepen.io/codexmon/pen/mdrJRbj?editors=0012" target="_blank">Codepen</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+         <section>
+            <h2>Numbers Galore</h2>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank">documentation on MDN</a> for more ideas on how to work with numbers.</p>
+        </section>
+
+        <section>
+            <h1>Booleans</h1>
+        </section>
+
+        <section>
+            <h2>Booleans as Variables</h2>
+            <p>We have learned that there are only two values for a boolean: <code style="color: aqua;">true</code> or <code style="color: aqua;">false</code>.</p>
+            <p class="fragment">Booleans can be easily interpreted and compiled into machine code of 1's or 0's, on or off, yes or no,<br>run the program or not to run the program.</p>
+            <p class="fragment">Booleans are excellent for programs!</p>
+        </section>
+
+        <section>
+            <h2>Booleans in Programs</h2>
+            <ul>
+                <li class="fragment">loops
+                    <ul>
+                        <li>If a condition evaluates to <code style="color: aqua;">true</code>, the loop will run.</li>
+                        <li>If a condition evaluates to <code style="color: aqua;">false</code>, the loop will stop.</li>
+                    </ul>
+                </li>
+                <li class="fragment">if/else statements
+                    <ul>
+                        <li class="fragment">If the <code style="color: aqua;">if</code> condition evaluates to 
+                            <ul>
+                                <li><code style="color: aqua;">true</code>, the <code style="color: aqua;">if</code> block runs.</li>
+                                <li><code style="color: aqua;">false</code>, the <code style="color: aqua;">if</code> block is ignored.</li>
+                            </ul>
+                            </li>
+                        <li  class="fragment">If the <code style="color: aqua;">if</code> condition is <code style="color: aqua;">false</code>, the program will evaluate the <code style="color: aqua;">else if</code> condition (if the else if statement exists).
+                            <ul>
+                                <li>If <code style="color: aqua;">true</code>, the <code style="color: aqua;">else if</code> block runs.</li>
+                                <li>If <code style="color: aqua;">false</code>, the <code style="color: aqua;">else if</code> block is ignored.</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">If <code style="color:aqua;">if</code>/ else if is <code style="color: aqua;">false</code>, the program runs the <code style="color: aqua;">else</code> block.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Loops Review</h2>
+            <p>When do we often use a <code style="color: aqua;">for loop</code>? <span class="fragment">For Arrays!</span></p>
+            <p class="fragment">When do we often use a <code style="color: aqua;">for in loop</code>? <span class="fragment">For Objects!</span></p>
+            <p class="fragment">For the following loops, can you find the condition to evaluate as <code style="color: aqua;">true</code> or <code style="color: aqua;">false</code>?</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var arr = ["Garfield", "Hello Kitty", "Caticorn"];
+for (var i = 0; i < arr.length; i++) {
+  console.log("Favorite Kitty of the Month is: " + arr[i]);
+}
+            </pre></code> 
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var obj = {
+    grain: "quinoa",
+    fruit: "raisin"
+};
+for (key in obj) {
+    console.log("This energy bar has " + key);
+}
+            </pre></code> 
+        </section>
+
+        <section>
+            <h2>If Else Review</h2>
+            <p>Identify the conditions to evaluate as <code style="color: aqua;">true</code> or <code style="color: aqua;">false</code>.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var weather = "sunny";
+if (weather === "rainy") {
+    console.log("Stay inside and make some hot chocolate.");
+} else if (weather === "cloudy") {
+    console.log("Go for a hike. Remember the hat and sunblock!");
+} else {
+    console.log("Time to go to the beach! Bring gear and towels.");
+}
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Loops and If Else Review Exercise</h2>
+            <p>Work on this <a href="https://codepen.io/codexmon/pen/VwKLPrE?editors=0012" target="_blank">Codepen</a>.</p>
+        </section>
+
+        <section>
+            <h2>Booleans Galore</h2>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank">documentation on MDN</a> for more ideas on how to work with booleans.</p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <p>Up to this point we have been seeing two kinds of operators:</p>
+            <ul>
+                <li class="fragment">unary operator (e.g., unary plus)</li>
+                <li class="fragment">binary operator (e.g., equality operator)</li>
+            </ul>
+            <p class="fragment">Unlike a unary operator that takes in one operand and a binary operator that takes in two operands,<br>a <span style="color: yellow;">ternary operator</span> takes in three operands.</p>
+            <p class="fragment">if/else statements are ternary:</p>
+            <ul>
+                <li class="fragment">Operand 1: the condition to evaluate as <code style="color: aqua;">true</code> or <code style="color: aqua;">false</code></li>
+                <li class="fragment">Operand 2: the expression to run if <code style="color: aqua;">true</code></li>
+                <li class="fragment">Operand 3: the expression to run if <code style="color: aqua;">false</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <p>The ternary operator for if/else statements uses this syntax:</p>
+            <p>condition <code style="color: aqua;">?</code> expressionIfTrue  <code style="color: aqua;">:</code> expressionIfFalse</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Refactor me into a ternary statement!
+var weather = "sunny";
+if (weather === "sunny") {
+    console.log("Beach time!");
+} else {
+    console.log("Hot cocoa time!");
+}
+            </pre></code>
+            <p class="fragment">Identify the condition to evaluate.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny")
+            </pre></code>
+            <p class="fragment">Insert the <code style="color: aqua;">?</code> for the ternary statement.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny") ? 
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <h3>Expression If True</h3>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Refactor me into a ternary statement!
+var weather = "sunny";
+if (weather === "sunny") {
+    console.log("Beach time!");
+} else {
+    console.log("Hot cocoa time!");
+}
+            </pre></code>
+            <p class="fragment">So far, our refactoring looks like this:</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny") ? 
+            </pre></code>
+            <p class="fragment">Next, we identify the expression to run if the condition evaluates to <code style="color: aqua;">true</code> and insert after the <code style="color: aqua;">?</code>.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny") ? console.log("Beach time!")
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <h3>Expression if False</h3>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Refactor me into a ternary statement!
+var weather = "sunny";
+if (weather === "sunny") {
+    console.log("Beach time!");
+} else {
+    console.log("Hot cocoa time!");
+}
+            </pre></code>
+            <p class="fragment">So far, our refactoring looks like this:</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny") ? console.log("Beach time!")
+            </pre></code>
+            <p class="fragment">Next, we insert a <code style="color: aqua;">:</code> followed by the expression to run if the condition evaluates to <code style="color: aqua;">false</code>.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(weather === "sunny") ? console.log("Beach time!") : console.log("Hot cocoa time!");
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <pre><code class="js" data-trim contenteditable>
+(weather === "sunny") ? console.log("Beach time!") : console.log("Hot cocoa time!");
+            </pre></code>
+            <p>We have a ternary statement! However, to see the values in console, we must save to a variable before logging.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var print = (weather === "sunny") ? console.log("Beach time!") : console.log("Hot cocoa time!");
+console.log(print);
+            </pre></code>
+            <p class="fragment">Since we are logging <code style="color: aqua;">print</code> to the console, we can drop the <code style="color: aqua;">console.log()</code> in the expressions.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var print = (weather === "sunny") ? "Beach time!" : "Hot cocoa time!";
+console.log(print);
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator Recap</h2>
+            <p>The following <code style="color: aqua;">if/else</code> statement has been refactored using a ternary operator!</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Before
+var weather = "sunny";
+if (weather === "sunny") {
+    console.log("Beach time!");
+} else {
+    console.log("Hot cocoa time!");
+}
+            </pre></code>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//After
+var weather = "sunny";
+var print = (weather === "sunny") ? "Beach time!" : "Hot cocoa time!";
+console.log(print);
+            </pre></code>
+            <p class="fragment">Ternary operators work even if we have <code style="color: aqua;">else if</code> statements! See the next slide.</p>
+        </section>
+
+        <section>
+            <h2>If Else Ternary Operator Exercise</h2>
+            <p>Work on this <a href="https://codepen.io/codexmon/pen/eYdNwjv?editors=0012" target="_blank">Codepen</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>Let's take a look at the following code:</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var canEat = "snacky";
+if (canEat === "hungry") {
+    console.log("Meal time.");
+} else if (canEat === "snacky") {
+    console.log("Munchies, please.");
+} else {
+    console.log("No go.");
+}
+            </pre></code>
+            <p class="fragment">We will still need to identify the:</p>
+            <p class="fragment">condition <code style="color: aqua;">?</code> expressionIfTrue  <code style="color: aqua;">:</code> expressionIfFalse</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(canEat === "hungry") ? "Meal time." : "No go."
+            </pre></code>
+            <p class="fragment">How do we account for the else if condition?<br><span class="fragment">Let's see on the next slide.</span></p>
+        </section>
+        
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>We must use a nested ternary operator to account for the <code style="color: aqua;">else if</code> condition.</p>
+            <p class="fragment"><span style="color: yellow;">condition</span> <code style="color: aqua;">?</code> <span style="color: orange;">expressionIfTrue</span> <code style="color: aqua;">:</code> <span style="color: lightgreen;"> condition <code style="color: aqua;">?</code> expressionIfTrue <code style="color: aqua;">:</code> expressionIfFalse</span></p>
+            <p class="fragment">The ternary operator still has 3 operands:</p>
+            <p class="fragment"><span style="color: yellow;">operand1</span> <code style="color: aqua;">?</code> <span style="color: orange;">operand2</span> <code style="color: aqua;">:</code> <span style="color: lightgreen;"> operand3</span></p>
+            <p class="fragment"><span style="color: lightgreen;">Operand3</span> holds the <code style="color: aqua;">else-if</code> statement, which is formed with a nested ternary operator!</p>
+        </section>
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>To make the ternary statement more readable:</p>
+            <table>
+                <tr>
+                    <th>Statement</th>
+                    <th>Syntax</th>
+                </tr>
+                <tr>
+                    <td><code style="color: aqua;">if</code></td>
+                    <td>condition1 <code style="color: aqua;">?</code> expressionIfTrue1</td>
+                </tr>
+                <tr>
+                    <td><code style="color: aqua;">else if</code></td>
+                    <td><code style="color: aqua;">:</code> condition2 <code style="color: aqua;">?</code> expressionIfTrue2</td></td>
+                </tr>
+                <tr>
+                    <td><code style="color: aqua;">else</code></td>
+                    <td><code style="color: aqua;">:</code> expressionIfFalse</td>
+                </tr>
+            </table>
+            <p class="fragment">Suppose you had a third condition to evaluate. Where would the code go? What would the syntax be?</p>
+            <p class="fragment">You can have as many <code style="color: aqua;">else if</code> statements as needed!</p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>Let's refactor the following code into a ternary statement.</p>
+            <pre><code class="js" data-trim contenteditable>
+var canEat = "snacky";
+if (canEat === "hungry") {
+    console.log("Meal time.");
+} else if (canEat === "snacky") {
+    console.log("Munchies, please.");
+} else {
+    console.log("No go.");
+}
+            </pre></code>
+            <p class="fragment">We will still need to identify the:</p>
+            <p class="fragment">condition <code style="color: aqua;">?</code> expressionIfTrue  <code style="color: aqua;">:</code> expressionIfFalse</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(canEat === "hungry") ? "Meal time." : "No go."
+            </pre></code>
+            <p class="fragment">How do we account for the else if condition?<br><span class="fragment">Let's see on the next slide.</span></p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <pre><code class="js" data-trim contenteditable>
+//We are refactoring the following code into a ternary statement.
+var canEat = "snacky";
+if (canEat === "hungry") {
+    console.log("Meal time.");
+} else if (canEat === "snacky") {
+    console.log("Munchies, please.");
+} else {
+    console.log("No go.");
+}
+            </pre></code>
+            <p class="fragment">Let's refactor our code to make it more readable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(canEat === "hungry") ? "Meal time." 
+  : "No go.";
+            </pre></code>
+            <p class="fragment">Identify and insert the <code style="color: aqua;">else if</code> condition with its expressionIfTrue.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(canEat === "hungry") ? "Meal time." 
+  : (canEat === "snacky") ? "Munchies, please."
+  : "No go.";
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>Our refactored code now has a line of code to account for the <code style="color:aqua;">else if</code> condition.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+(canEat === "hungry") ? "Meal time." 
+    : (canEat === "snacky") ? "Munchies, please."
+    : "No go.";
+            </pre></code>
+            <p class="fragment">We will need to store our ternary statement in a variable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var hungerLevel = (canEat === "hungry") ? "Meal time." 
+  : (canEat === "snacky") ? "Munchies, please."
+  : "No go.";
+            </pre></code>
+            <p class="fragment">What can we <code style="color: aqua;">console.log()</code>?</p>
+            <p class="fragment">If <code style="color: aqua;">canEat</code> is reassigned the value of "<code style="color: aqua;">starving</code>", what will we see in the console?</p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Else If Condition</h2>
+            <p>The following code has been refactored using ternary operators!</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Before
+var canEat = "snacky";
+if (canEat === "hungry") {
+    console.log("Meal time.");
+} else if (canEat === "snacky") {
+    console.log("Munchies, please.");
+} else {
+    console.log("No go.");
+}
+            </pre></code>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//After
+var canEat = "snacky";
+var hungerLevel = (canEat === "hungry") ? "Meal time." 
+    : (canEat === "snacky") ? "Munchies, please."
+    : "No go.";
+console.log(hungerLevel);
+            </pre></code>
+            <p class="fragment">Where can I add an <code style="color: aqua;">else if</code> condition for <code style="color: aqua;">canEat</code>?</p>
+        </section>
+
+        <section>
+            <h2>Else If Ternary Operator Exercise</h2>
+            <p>Work on this <a href="https://codepen.io/codexmon/pen/VwKvxyO?editors=0012" target="_blank">Codepen</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+        <section>
+            <h2>Ternary Operator and Functions</h2>
+            <p>Ternary operators can be returned in functions.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Let's refactor the following ternary statement into a function.
+var moodLevel = 1;
+var moodNow = (moodLevel === 5) ? "Awesome!"
+  : (moodLevel >= 3) ? "Fair"
+  : "Bleh";
+            </pre></code>
+            <p class="fragment">Return a ternary statement in a function declaration that accepts user input for mood.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+function getMood() {
+  var moodLevel = +prompt("What is your mood? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">Notice: the ternary statement follows the <code style="color: aqua;">return</code> keyword.</p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator and Function Call</h2>
+            <p>How do we view the value of a returned ternary statement from this function in the console?</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+function getMood() {
+  var moodLevel = +prompt("What is your mood? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">We must call the function first before we can <code style="color: aqua;">console.log()</code> the returned value.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+getMood();
+            </pre></code>
+            <p class="fragment">We must save the function call to a variable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var result1 = getMood();
+//Now, what can we console.log()?
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator and Arrow Functions</h2>
+            <p>Let's refactor our function declaration into an arrow function.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+function getMood() {
+  var moodLevel = +prompt("What is your mood? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">Remember that arrow functions are function expressions, which are anonymous functions saved to a variable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//The name of the function is the name of the variable that stores the arrow function.
+var getMood;
+</pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator and Arrow Functions</h2>
+            <p>Arrow functions allow us to take in parameters. Does the function below take in parameters?</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+function getMood() {
+  var moodLevel = +prompt("What is your mood? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">If a function does not take in a parameter, we use an empty <code style="color: aqua;">()</code> as a placeholder before the arrow (<code style="color: aqua;">=></code>).</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//We begin to assign an arrow function as the value of "getMood".
+var getMood = () => //This arrow function is incomplete. What's missing?
+            </pre></code>
+            <p class="fragment">Every function needs instructions, a code block.</p>
+        </section>
+
+        <section>
+            <h2>Ternary Operator and Arrow Functions</h2>
+            <p>The final step of refactoring this function declaration into an arrow function is to copy the code block.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Function Declaration
+function getMood() {
+  var moodLevel = +prompt("What is your mood? 1 (low) to 5 (high)");return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">The curly braces <code style="color: aqua;">{}</code>, including the code block they wrap, follow the <code style="color: aqua;">=></code>.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//Arrow function
+var getMood = () => {
+  var moodLevel = +prompt("What is your mood today? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Arrow Function Call</h2>
+            <p>How do we view the value of a returned ternary statement from this arrow function in the console?</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var getMood = () => {
+  var moodLevel = +prompt("What is your mood today? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">We must call the arrow function first before we can <code style="color: aqua;">console.log()</code> the returned value.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+getMood();
+            </pre></code>
+            <p class="fragment">We must save the function call to a variable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var result = getMood();
+//Now, what can we console.log()?
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator with Function Params</h2>
+            <pre><code class="js" data-trim contenteditable>
+//How do we refactor our arrow function to accept params?
+var getMood = () => {
+  var moodLevel = +prompt("What is your mood today? 1 (low) to 5 (high)");
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+//If the arrow function only has one parameter, the () is implied.
+var getMood = moodLevel => {
+  return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p class="fragment">If the arrow function has more than one parameter, each param is comma-separated within the <code style="color: aqua;">()</code> before the <code style="color: aqua;">=></code>.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var getMood = (moodLevel, str) => {
+  return (moodLevel === 5) ? "Awesome!" + str
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Passing in Parameters</h2>
+            <p>How do we call the function?</p>
+            <pre><code class="js" data-trim contenteditable>
+var getMood = moodLevel => {
+    return (moodLevel === 5) ? "Awesome!"
+    : (moodLevel >= 3) ? "Fair"
+    : "Bleh";
+}
+            </pre></code>
+            <p>How do we pass in a parameter into the function call?</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+getMood(5);
+//How do we view the returned statement in the console?
+            </pre></code>
+            <p class="fragment">We must save the function call to a variable.</p>
+            <pre class="fragment"><code class="js" data-trim contenteditable>
+var result = getMood(5);
+//Now, what can we console.log()?
+            </pre></code>
+        </section>
+
+        <section>
+            <h2>Ternary Operator in Arrow Functions Exercise</h2>
+            <p>Work on this <a href="https://codepen.io/codexmon/pen/XWjmYPr?editors=0012" target="_blank">Codepen</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+        <section>
+            <h2>Ternary Operator</h2>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator#:~:text=The%20conditional%20(ternary)%20operator%20is,if%20the%20condition%20is%20falsy." target="_blank">documentation on MDN</a> for more examples of how to work with a ternary operator.</p>
+        </section>
+
+        <section>
+            <h1>Arrays</h1>
+        </section>
+
+        <section>
+            <h2>Arrays and Array Methods</h2>
+            <p>Arrays are excellent for storing lists of items.<br>Methods can be applied to arrays to structure the information stored in arrays.</p>
+            <p>In the Algorithms unit, we applied various array methods in our code.</p>
+            <p>Watch this <a href="https://www.youtube.com/watch?v=Urwzk6ILvPQ" target="_blank">video</a> on common array methods.</p>
+        </section>
+
+        <section>
+            <h2>Select Array Methods</h2>
+            <p>On the following slides, we will cover these select array methods that are often used in programming.</p>
+            <ul>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">.map()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">.splice()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">.sort()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">.forEach()</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Array.prototype.map()</h2>
+            <h3>From Number to Number</h3>
+            <p><code style="color: aqua;">.map()</code> loops through each item in the input array,<br> runs a provided function that applies to each input item,<br>and outputs a new array of the returned items.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const numbers = [1, 2, 3, 4];
+const doubled = numbers.map(item => item * 2);
+console.log(doubled); // [2, 4, 6, 8]    
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">item</code> is a name for each item in the input array of <code style="color: aqua;">numbers</code>.</p>
+            <p class="fragment">The arrow function is doubling the value of each <code style="color: aqua;">item</code> in the input array of <code style="color: aqua;">numbers</code>.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">doubled</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.map()</h2>
+            <h3>From Number to String</h3>
+            <p><code style="color: aqua;">.map()</code> loops can change the data type of the input item<br> (per the code of the function that applies to each input item)<br> to become a different data type for the output array.</p>
+<pre class="fragment"><code class="hljs" data-trim contenteditable>
+//this example is helpful for giving key numbers to &lt;li&gt;                        
+const keys = [1, 2, 3, 4];
+const keysUnique = keys.map(key => "key" + key);
+console.log(keysUnique); // ["key1", "key2", "key3", "key4"]  
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">key</code> is a name for each item in the input array of <code style="color: aqua;">keys</code>.</p>
+            <p class="fragment">The arrow function is adding a string of <code style="color: aqua;">"key"</code> to each <code style="color: aqua;">key</code> in the input array of <code style="color: aqua;">keys</code>.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">keysUnique</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.map()</h2>
+            <h3>From Number to Tags</h3>
+            <p><code style="color: aqua;">.map()</code> can loop through the input items,<br> apply the provided function, and return HTML tags in the output array.</p>
+<pre class="fragment"><code class="hljs" data-trim contenteditable>
+const rows = [1, 2, 3, 4, 5] //this example extends to creating elements
+const tableRows = rows.map(row => "&lt;tr&gt;" + row + "&lt;/tr&gt;");
+console.log(tableRows); // ["&lt;tr&gt;1&lt;/tr&gt;", "&lt;tr&gt;2&lt;/tr&gt;", "&lt;tr&gt;3&lt;/tr&gt;", "&lt;tr&gt;4&lt;/tr&gt;", "&lt;tr&gt;5&lt;/tr&gt;"] 
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">row</code> is a name for each item in the input array of <code style="color: aqua;">rows</code>.</p>
+            <p class="fragment">The arrow function is adding opening and closing tags to each to each <code style="color: aqua;">row</code> in the input array of <code style="color: aqua;">rows</code>.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">tableRows</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.map() Dog Exercise</h2>
+            <p>Given the <code style="color: aqua;">dogs</code> array, create a <code style="color: aqua;">.map()</code> for <code style="color: aqua;">img</code> tags with differing source attributes.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const dogs = ["dog1.jpg", "dog2.jpg", "dog3.jpg"];  
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const dogs = ["dog1.jpg", "dog2.jpg", "dog3.jpg"];
+const images = dogs.map(dog => `<img src="images/${dog}" />`);
+console.log(images);   
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">dog</code> is a name for each item in the input array of <code style="color: aqua;">dogs</code>.</p>
+            <p class="fragment">The arrow function is creating an <code style="color: aqua;">img</code> tag for each <code style="color: aqua;">dog</code> in the input array of <code style="color: aqua;">dogs</code>.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">images</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.map() Colors Exercise</h2>
+            <p>Given the <code style="color: aqua;">colors</code> array, create a <code style="color: aqua;">.map()</code> that returns objects with the color and its index value.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const colors = ["teal", "orange", "purple"];
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const collection = colors.map(function(item, i) { 
+    return {index: i, color: item};
+});
+console.log(collection); //this array has three objects
+</pre></code>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Given the handles array, refactor the function in .map() to include handles.                    
+const handles = ["lhack", "cmh", "magical"];
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>                        
+const collection = colors.map(function(item, i) { 
+    var handle = handles[i];
+    return {index: i, color: item, handle: handle};
+});
+console.log(collection); //this array has 3 objects, each with 3 props
+</pre></code> 
+            <p class="fragment">Feel free to review the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">MDN Documentation</a>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.filter()</h2>
+            <p><code style="color: aqua;">.filter()</code> loops through each item in the input array,<br> tests each item against a provided function,<br>and outputs a new array of items that passed the test.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+// this example works with numbers          
+const numbers = [1, 2, 3, 4];
+const evens = numbers.filter(item => item % 2 === 0);
+console.log(evens); // [2, 4]
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">item</code> is a name for each item in the input array of <code style="color: aqua;">numbers</code>.</p>
+            <p class="fragment">The arrow function is testing if each <code style="color: aqua;">item</code> in the input array of <code style="color: aqua;">numbers</code> is evenly divisible by 2.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">evens</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.filter()</h2>
+            <h3>Return a Match Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+// this example helps with finding matches        
+const pianos = [
+  { name: "Sierra", color: "red" },
+  { name: "Junior", color: "orange" },
+  { name: "Talia", color: "yellow" },
+  { name: "Frank", color: "green" },
+  { name: "Marco", color: "blue" }
+];
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const findBlue = pianos.filter(piano => piano.color === "blue");
+console.log(findBlue); // [ { color: "blue", name: "Marco" } ]
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">piano</code> is a name for each item in the <code style="color: aqua;">pianos</code> collection.</p>
+            <p class="fragment">The arrow function tests if each <code style="color: aqua;">piano</code> in the <code style="color: aqua;">pianos</code> collection has a <code style="color: aqua;">color</code> property whose value is <code style="color: aqua;">"blue"</code>.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">findBlue</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.filter()</h2>
+            <h3>Appointment Reminder Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//get info on who has appointment times before noon (to send reminders)
+const patients = [
+  { name: "Carlos", appointment: 7 },
+  { name: "Duncan", appointment: 11 },
+  { name: "Evangeline", appointment: 9 },
+  { name: "Flora", appointment: 15 },
+  { name: "George", appointment: 16 }
+];
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const beforeNoon = patients.filter(patient => patient.appointment < 12);
+console.log(beforeNoon); // [ { appointment: 7, name: "Carlos" }, { appointment: 9, name: "Evangeline" }, { appointment: 11, name: "Duncan" } ]
+</pre></code>
+            <p class="fragment"><code style="color: aqua;">patient</code> is a name for each item in the <code style="color: aqua;">patients</code> collection.</p>
+            <p class="fragment">The arrow function tests if each <code style="color: aqua;">patient</code> in <code style="color: aqua;">patients</code> has an <code style="color: aqua;">appointment</code> property whose value is before <code style="color: aqua;">12</code> noon.</p>
+            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">beforeNoon</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.filter()</h2>
+            <h3>Prescription Retrieval Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const drugs = [
+  { username: "Harley", drug: "aspirin" },
+  { username: "Ida", drug: "electrolytes" },
+  { username: "Ladan", drug: "electrolytes" }
+];
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const minerals = drugs.filter(item => item.drug === "electrolytes");
+console.log(minerals); // [{ drug: "electrolytes", username: "Ida" }, { drug: "electrolytes", username: "Ladan" }]
+</pre></code>
+            <p class="fragment"><code style="color: aqua;">item</code> is a name for each user object in the <code style="color: aqua;">drugs</code> collection.</p>
+            <p class="fragment">The arrow function tests if each <code style="color: aqua;">item</code> in <code style="color: aqua;">drugs</code> has a <code style="color: aqua;">drug</code> property whose value is <code style="color: aqua;">"electrolytes"</code>.</p>
+            <p class="fragment">The output is stored in the new variable <code style="color: aqua;">minerals</code>.</p>
+            <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">MDN Documentation</a>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.splice()</h2>
+            <p><code style="color: aqua;">.splice()</code> loops through the array<br> and can remove or replace or add items by index position.</p>
+            <p><code style="color: aqua;">.splice()</code> accepts at a minimum 2 parameters:</p>
+            <ol>
+                <li>index position of the item</li>
+                <li>how many elements to remove/replace</li>
+            </ol>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const toRead = ["A Christmas Carol", "Becoming", "Committed"];
+//use .splice() to drop "Becoming" in toRead
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+toRead.splice(1, 1); 
+//at index position 1,
+//drop 1 item,
+console.log(toRead); //["A Christmas Carol", "Committed"]
+</pre></code>
+        </section>
+
+        <section>
+            <h2>Array.prototype.splice()</h2>
+            <p><code style="color: aqua;">.splice()</code> can accept more than 2 params.</p>
+            <p>The 3rd, 4th, 5th, etc. optional params in a <code style="color: aqua;">.splice()</code> are additions of items at the index position.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const nums = [1, 3, 4, 5, 6]; //use .splice() to add 2 to the nums array
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+nums.splice(1, 0, 2); //note the third param
+//at index position 1,
+//drop 0 items,
+//add the item 2.
+console.log(nums); //[1, 2, 3, 4, 5, 6]
+</pre></code>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const months = ["Sep", "Dec"]; //use .splice() to add "Oct" and "Nov"
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+months.splice(0, 0, "Oct", "Nov"); //note the 3rd and 4th params
+// at index position 0,
+// drop 0 items,
+// add 2 items: "Oct" and "Nov"
+console.log(months); // ["Sep", "Oct", "Nov", "Dec"];
+</pre></code>
+        </section>
+
+        <section>
+            <h2>Array.prototype.splice()</h2>
+            <h3>Dog Moms Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Please add Laura and Coach so the moms appear in alphabetical order. 
+const dogMoms = [
+  { mom: "Catie", dog: "Archie" },
+  { mom: "Magical", dog: "Cloud" }
+]; 
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+dogMoms.splice(0, 0, { mom: "Laura", dog: "Coach"});
+//at index position 0,
+//drop 0 items,
+//add the object.
+console.log(dogMoms); //[{ mom: "Catie", dog: "Archie" },{ mom: "Laura", dog: "Coach"},{ mom: "Magical", dog: "Cloud" }]
+</pre></code>
+            <p class="fragment">Oftentimes, the object is stored in a variable pre-splicing.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+var obj = { mom: "Laura", dog: "Coach" };
+dogMoms.splice(0, 1, obj);
+console.log(dogMoms); //dogMoms is now a collection with 3 items
+</pre></code>
+            <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">MDN Documentation</a>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <p><code style="color: aqua;">.sort()</code> sorts an array using three steps:</p>
+            <ol>
+                <li>converts each item in the array into a string</li>
+                <li>compares their sequences of UTF-16 code units values</li>
+                <li>has default ascending sort order (based upon UTF-16)</li>
+            </ol>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const months = ["November", "December", "January", "February"]; 
+</pre></code> 
+<pre class="fragment"><code class="js" data-trim contenteditable>
+months.sort();
+console.log(months); //["December", "February", "January", "November"]
+</pre></code>
+            <p class="fragment">How will <code style="color: aqua;">.sort()</code> impact numbers?</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <h3>Months Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//previous slide's months converted into numbers
+const months = [11, 12, 1, 2];
+months.sort();
+console.log(months); //What will we see in the console?
+</pre></code>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//months is now: [1, 11, 12, 2]
+//Why?
+//.sort() converts the items into strings for UTF-16 comps + sequencing
+//then .sort() gives you the newly ordered items in the array
+</pre></code>
+            <p class="fragment">So how do we <code style="color: aqua;">.sort()</code> number data types so that <code style="color: aqua;">months</code> is <code style="color: aqua;">[1, 2, 11, 12]</code>?</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <h3>Compare Function</h3>
+            <p>Built into <code style="color: aqua;">.sort()</code> is a default compare function.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+function compare(a, b) { //a and b are UTF-16 characters being compared.
+  var value = (a < b) ? -1
+  : (a > b) ? 1
+  : 0 //when (a === b)
+  return value;
+} //this default function will always return numbers out of numerical order.
+</pre></code>
+            <p class="fragment">To sort numbers, we must pass in a function to override the default compare function.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+function compareNums(a, b) { //a, b are params for UTF-16 comps, sequencing.
+    return a - b;
+} //this override function will always return numbers in numerical order.
+</pre></code>
+            <p class="fragment">How do we pass in this override function into <code style="color: aqua;">.sort()</code>?</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <h3>Months as Numbers Example</h3>
+            <p>We want to pass in this override function into <code style="color: aqua;">.sort()</code>.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Refactor this override function into an arrow function.
+function compareNums(a, b) {
+    return a - b;
+}
+//Type the code for the arrow function here:
+</pre></code>
+            <p class="fragment">Pass the arrow function into the <code style="color: aqua;">.sort()</code>.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const months = [11, 12, 1, 2];
+months.sort((a,b) => a - b);
+console.log(months); //[1, 2, 11, 12]
+</pre></code>
+            <p class="fragment">Viola! The array's items are in numerical order.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <h3>Sales Collection Example</h3>
+            <p>A retailer wants to know what items to reinvest in.
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Use override functions to store results in two new collections:
+//1. Order product sales from highest to lowest. (var bySales)
+//2. Alphabetize the collection by accessory name. (var byNames)
+var products = [
+  {accessory: "mittens", sales: 129},
+  {accessory: "scarf", sales: 63},
+  {accessory: "hat", sales: 85}
+];
+</pre></code>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Collection ordered by descending sales:
+var bySales = products.sort((a,b) => a.sales - b.sales);
+</pre></code>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+//Collection alphabetized by accessory name:
+var byNames1 = products.sort((a,b) => a.accessory > b.accessory ? 1 : -1);
+
+//uppercase and lowercase characters have different UTF-16 values.
+var byNames2 = products.sort((a,b) => a.accessory.toUpperCase() > b.accessory.toUpperCase() ? 1 : -1);
+</pre></code>
+        </section>
+
+        <section>
+            <h2>Array.prototype.sort()</h2>
+            <h3>Portrait Collection Example</h3>
+<pre><code class="js" data-trim contenteditable>
+//Use .sort() to order by title, by artist and by year in ascending order.
+const paintings = [
+  {title: "Mona Lisa", artist: "Leonardo da Vinci", year: 1517},
+  {title: "Shot Blue Marilyn", artist: "Andy Warhol", year: 1964},
+  {title: "Las Dos Fridas", artist: "Frida Kahlo", year: 1939}
+];
+//By title:
+
+//By artist:
+
+//By year:
+
+</pre></code>
+            <p>Feel free to reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">MDN Documentation</a>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.forEach()</h2>
+            <p><code style="color: aqua;">.forEach()</code> loops through the array<br> and applies a provided function to each item in the array.</p>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const nums = [12, 24, 36]; 
+const copy = [];   
+nums.forEach(num => copy.push(num + num)); 
+console.log(copy); //[24, 48, 72]
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">num</code> is a name for each number in the <code style="color: aqua;">nums</code> array.</p>
+            <p class="fragment">The arrow function adds each <code style="color: aqua;">num</code> in <code style="color: aqua;">nums</code> to itself.<br>The sum is pushed to <code style="color: aqua;">copy</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.forEach()</h2>
+            <h3>Handbags Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const handbags = ["handbag1", "handbag2", "handbag3"]; 
+const urls = []; 
+handbags.forEach(item => urls.push("https://bags.com/" + item + ".jpg"));
+console.log(urls); //["https://bags.com/handbag1.jpg", "https://bags.com/handbag2.jpg", "https://bags.com/handbag3.jpg"]
+</pre></code> 
+            <p class="fragment"><code style="color: aqua;">item</code> is a name for each handbag in the <code style="color: aqua;">handbags</code> array.</p>
+            <p class="fragment">The arrow function concatenates to create a url for each <code style="color: aqua;">item</code> and pushes the result to <code style="color: aqua;">urls</code>.</p>
+        </section>
+
+        <section>
+            <h2>Array.prototype.forEach()</h2>
+            <h3>Salt Collection Example</h3>
+<pre class="fragment"><code class="js" data-trim contenteditable>
+const salt = [
+  { name: "Himalayan", partSpeech: "adjective", color: "pink" },
+  { name: "kosher", partSpeech: "adjective", color: "white" },
+  { name: "sel gris", partSpeech: "noun", color: "gray" },
+  { name: "kala manak", partSpeech: "noun", color: "purple-red" },
+  { name: "Hawaiian alaea", partSpeech: "adjective", color: "red" },
+  { name: "Cyprus lava", partSpeech: "adjective", color: "black" }
+];
+const statements = [];
+salt.forEach(item =>
+    (item.partSpeech === "adjective") 
+    ? statements.push(item.name + " salt is " + item.color)
+    : statements.push(item.name + " is " + item.color)
+);
+console.log(statements); //["Himalayan salt is pink", "kosher salt is white", 
+//"sel gris is gray", "kala manak is purple-red", "Hawaiian alaea salt is red", 
+//"Cyprus lava salt is black"]
+</pre></code> 
+            <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">MDN Documentation</a>.</p>
+        </section>
+
+        <section>
+            <h2>Array Methods We Covered:</h2>
+            <ul>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">.map()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">.splice()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">.sort()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">.forEach()</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Arrays</h2>
+            <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">documentation on MDN</a> for more examples of how to work with arrays.</p>
+        </section>
+
+        <section>
+            <h1>Objects</h1>
+        </section>
+
+        <section>
+            <h2>Objects</h2>
+            <p>We covered much on Objects in Object-Oriented JavaScript.</p>
+            <p>In addition to Constructor functions, we will encounter Class functions often used to create Class components in JavaScript frameworks.</p>
+            <p>Watch this <a href="https://anniecannons.udemy.com/course/javascript-object-oriented-programming/learn/lecture/10020610#overview" target="_blank">short video</a> on Class functions.</p>
+        </section>
+
+        <section>
+            <h2>More Advanced JavaScript</h2>
+            <p>Watch these <a href="https://docs.google.com/document/d/1uzAOfnqKt_tnuI7kWHu5Sc_jMtlzuP1EeMmN0enhSuY/edit?usp=sharing" target="_blank">Advanced JavaScript videos</a>.</p>
+            <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
+        </section>
+
+        <section>
+            <h2>Advanced JavaScript Roundup</h2>
+            <p>Click <a href="https://docs.google.com/document/d/1E4_KM-tErWe7sCfVpfT6-ecGC6416-bZE7sHL-6DntI/edit?usp=sharing" target="_blank">here</a> to review.</p>
+        </section>
+
+        <section style="text-align: left;">
+            <h1>THE END</h1>
+            <p>Thank you for your attention!</p>
+        </section>
+
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/zoomin.js"></script>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
