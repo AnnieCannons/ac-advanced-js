@@ -343,7 +343,7 @@ console.log(`It is ${a+b} days after the election.`);
 
         <section>
             <h2>Numbers and Functions Exercise</h2>
-            <p>Work on this Birthday Probability<a href="https://codepen.io/codexmon/pen/mdrJRbj?editors=0012" target="_blank">Codepen</a>.</p>
+            <p>Work on this Birthday <a href="https://codepen.io/codexmon/pen/mdrJRbj?editors=0012" target="_blank">Codepen</a>.</p>
             <a href="https://docs.google.com/spreadsheets/d/1dHybQNvrC0g8qR0Aolo75Cg68-Lc9ecrDJIfwZdYrbc/edit?usp=sharing" target="_blank"><img width="300" src="images/google-sheets.png" alt="Sheets logo"></a>
             <img src="images/exercise.gif" alt="Exercise Time">
         </section>
@@ -409,7 +409,7 @@ var obj = {
     grain: "quinoa",
     fruit: "raisin"
 };
-for (key in obj) {
+for (var key in obj) {
     console.log("This energy bar has " + key);
 }
             </pre></code> 
@@ -970,7 +970,7 @@ const tableRows = rows.map(row => "&lt;tr&gt;" + row + "&lt;/tr&gt;");
 console.log(tableRows); // ["&lt;tr&gt;1&lt;/tr&gt;", "&lt;tr&gt;2&lt;/tr&gt;", "&lt;tr&gt;3&lt;/tr&gt;", "&lt;tr&gt;4&lt;/tr&gt;", "&lt;tr&gt;5&lt;/tr&gt;"] 
 </pre></code> 
             <p class="fragment"><code style="color: aqua;">row</code> is a name for each item in the input array of <code style="color: aqua;">rows</code>.</p>
-            <p class="fragment">The arrow function is adding opening and closing tags to each to each <code style="color: aqua;">row</code> in the input array of <code style="color: aqua;">rows</code>.</p>
+            <p class="fragment">The arrow function is adding opening and closing tags to each <code style="color: aqua;">row</code> in the input array of <code style="color: aqua;">rows</code>.</p>
             <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">tableRows</code>.</p>
         </section>
 
@@ -1132,8 +1132,8 @@ console.log(nums); //[1, 2, 3, 4, 5, 6]
 const months = ["Sep", "Dec"]; //use .splice() to add "Oct" and "Nov"
 </pre></code> 
 <pre class="fragment"><code class="js" data-trim contenteditable>
-months.splice(0, 0, "Oct", "Nov"); //note the 3rd and 4th params
-// at index position 0,
+months.splice(1, 0, "Oct", "Nov"); //note the 3rd and 4th params
+// at index position 1,
 // drop 0 items,
 // add 2 items: "Oct" and "Nov"
 console.log(months); // ["Sep", "Oct", "Nov", "Dec"];
@@ -1151,8 +1151,8 @@ const dogMoms = [
 ]; 
 </pre></code> 
 <pre class="fragment"><code class="js" data-trim contenteditable>
-dogMoms.splice(0, 0, { mom: "Laura", dog: "Coach"});
-//at index position 0,
+dogMoms.splice(1, 0, { mom: "Laura", dog: "Coach"});
+//at index position 1,
 //drop 0 items,
 //add the object.
 console.log(dogMoms); //[{ mom: "Catie", dog: "Archie" },{ mom: "Laura", dog: "Coach"},{ mom: "Magical", dog: "Cloud" }]
@@ -1160,7 +1160,7 @@ console.log(dogMoms); //[{ mom: "Catie", dog: "Archie" },{ mom: "Laura", dog: "C
             <p class="fragment">Oftentimes, the object is stored in a variable pre-splicing.</p>
 <pre class="fragment"><code class="js" data-trim contenteditable>
 var obj = { mom: "Laura", dog: "Coach" };
-dogMoms.splice(0, 1, obj);
+dogMoms.splice(1, 1, obj);
 console.log(dogMoms); //dogMoms is now a collection with 3 items
 </pre></code>
             <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">MDN Documentation</a>.</p>
