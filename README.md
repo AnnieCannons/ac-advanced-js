@@ -1,4 +1,5 @@
 # AnnieCannons Advanced Javascript Course
+Link to Slides: http://anniecannons.github.io/ac-advanced-js
 This module introduces advanced JavaScript concepts and methods that are helpful in programming. The module includes:
 
 <ul>
