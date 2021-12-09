@@ -48,6 +48,18 @@
             <h1>Advanced JavaScript</h1>
         </section>
 
+        <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li>Review JavaScript's Main Roles</li>
+                <li>Strings</li>
+                <li>Numbers</li>
+                <li>Booleans</li>
+                <li>Arrays</li>
+                <li>Objects</li>
+            </ul>
+        </section>
+
         <!-- <section>
             <h2>Advanced JavaScript Review Study Guide</h2>
             <p>Click <a href="https://docs.google.com/document/d/1E4_KM-tErWe7sCfVpfT6-ecGC6416-bZE7sHL-6DntI/edit?usp=sharing" target="_blank">here</a> to view and make a copy for reference.</p>
@@ -115,6 +127,18 @@
             </ul>
             <p>Next, let's explore what we can do in ES6 with each kind of data type.</p>
         </section> -->
+
+        <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li class="green">Review JavaScript's Main Roles</li>
+                <li>Strings</li>
+                <li>Numbers</li>
+                <li>Booleans</li>
+                <li>Arrays</li>
+                <li>Objects</li>
+            </ul>
+        </section>
 
         <section>
             <h1>Strings</h1>
@@ -255,6 +279,18 @@ function flavor(taste) {
         <section>
             <h2>Strings Galore</h2>
             <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">documentation on MDN</a> for more ideas on how to work with strings.</p>
+        </section>
+
+        <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li class="green">Review JavaScript's Main Roles</li>
+                <li class="green">Strings</li>
+                <li>Numbers</li>
+                <li>Booleans</li>
+                <li>Arrays</li>
+                <li>Objects</li>
+            </ul>
         </section>
 
         <section>
@@ -406,6 +442,18 @@ console.log(`It is ${a+b} days after the election.`);
             <h2>Date Galore</h2>
             <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">documentation on MDN</a> for more ideas on how to work with numbers.</p>
         </section> -->
+
+        <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li class="green">Review JavaScript's Main Roles</li>
+                <li class="green">Strings</li>
+                <li class="green">Numbers</li>
+                <li>Booleans</li>
+                <li>Arrays</li>
+                <li>Objects</li>
+            </ul>
+        </section>
 
         <section>
             <h1>Booleans</h1>
@@ -962,6 +1010,18 @@ getMood(5, "Way to go!");
         </section>
 
         <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li class="green">Review JavaScript's Main Roles</li>
+                <li class="green">Strings</li>
+                <li class="green">Numbers</li>
+                <li class="green">Booleans</li>
+                <li>Arrays</li>
+                <li>Objects</li>
+            </ul>
+        </section>
+
+        <section>
             <h1>Arrays</h1>
         </section>
 
@@ -1090,12 +1150,22 @@ console.log(collection); //this array has 3 objects, each with 3 props
 
         <section>
             <h2>.map() Exercise</h2>
-            <p>Refactor the following for loop into a .map()</p>
-            
+            <p>Refactor the following <a href="https://jsbin.com/tuzezed/edit?js,console" target="_blank">for loop</a> into a .map()</p>
+<pre><code class="js" data-trim contenteditable>                        
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+const collection = [];
+for (let i = 0; i < days.length; i++) {
+    let obj = {dayOfWeek: i+1, day: days[i]}; 
+    collection.push(obj);
+}
+console.log(collection);
+</pre></code> 
+            <a href="https://trello.com/b/RQrD5Ye2" target="_blank"><img width="300" src="images/trello-logo-blue.png" alt="Trello logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
         </section>
 
         <section>
-            <h2>Array.prototype.filter()</h2>
+            <h2>.filter()</h2>
             <p><code style="color: aqua;">.filter()</code> loops through each item in the input array,<br> tests each item against a provided function,<br>and outputs a new array of items that passed the test.</p>
 <pre class="fragment"><code class="js" data-trim contenteditable>
 // this example works with numbers          
@@ -1172,7 +1242,7 @@ console.log(minerals); // [{ drug: "electrolytes", username: "Ida" }, { drug: "e
             <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">MDN Documentation</a>.</p>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Array.prototype.splice()</h2>
             <p><code style="color: aqua;">.splice()</code> loops through the array<br> and can remove or replace or add items by index position.</p>
             <p><code style="color: aqua;">.splice()</code> accepts at a minimum 2 parameters:</p>
@@ -1417,16 +1487,16 @@ console.log(statements); //["Himalayan salt is pink", "kosher salt is white",
 //"Cyprus lava salt is black"]
 </pre></code> 
             <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">MDN Documentation</a>.</p>
-        </section>
+        </section> -->
 
         <section>
             <h2>Array Methods We Covered:</h2>
             <ul>
                 <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">.map()</a></li>
                 <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter()</a></li>
-                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">.splice()</a></li>
+                <!-- <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" target="_blank">.splice()</a></li>
                 <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">.sort()</a></li>
-                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">.forEach()</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank">.forEach()</a></li> -->
             </ul>
         </section>
             
@@ -1446,6 +1516,18 @@ console.log(statements); //["Himalayan salt is pink", "kosher salt is white",
         <section>
             <h2>Arrays</h2>
             <p>Reference the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">documentation on MDN</a> for more examples of how to work with arrays.</p>
+        </section>
+
+        <section>
+            <h2>Advanced JavaScript Overview</h2>
+            <ul>
+                <li class="green">Review JavaScript's Main Roles</li>
+                <li class="green">Strings</li>
+                <li class="green">Numbers</li>
+                <li class="green">Booleans</li>
+                <li class="green">Arrays</li>
+                <li>Objects</li>
+            </ul>
         </section>
 
         <section>
