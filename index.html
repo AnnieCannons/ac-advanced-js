@@ -1150,36 +1150,30 @@ console.log(collection); //this array has 3 objects, each with 3 props
 
         <section>
             <h2>.map() Exercise</h2>
-            <p>Refactor the following <a href="https://jsbin.com/tuzezed/edit?js,console" target="_blank">for loop</a> into a .map()</p>
-<pre><code class="js" data-trim contenteditable>                        
-const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-const collection = [];
-for (let i = 0; i < days.length; i++) {
-    let obj = {dayOfWeek: i+1, day: days[i]}; 
-    collection.push(obj);
-}
-console.log(collection);
-</pre></code> 
+            <p>Refactor this <a href="https://jsbin.com/duxulac/edit?js,console" target="_blank">for loop</a> into a .map()</p>
+<!-- <pre><code class="js" data-trim contenteditable>                        
+
+</pre></code>  -->
             <a href="https://trello.com/b/RQrD5Ye2" target="_blank"><img width="300" src="images/trello-logo-blue.png" alt="Trello logo"></a>
             <img src="images/exercise.gif" alt="Exercise Time">
         </section>
 
         <section>
             <h2>.filter()</h2>
-            <p><code style="color: aqua;">.filter()</code> loops through each item in the input array,<br> tests each item against a provided function,<br>and outputs a new array of items that passed the test.</p>
+            <p><code style="color: aqua;">.filter()</code> loops through each item in the array,<br> tests each item against a provided function,<br>and returns a new array of items that passed the test.</p>
 <pre class="fragment"><code class="js" data-trim contenteditable>
 // this example works with numbers          
 const numbers = [1, 2, 3, 4];
 const evens = numbers.filter(item => item % 2 === 0);
 console.log(evens); // [2, 4]
 </pre></code> 
-            <p class="fragment"><code style="color: aqua;">item</code> is a name for each item in the input array of <code style="color: aqua;">numbers</code>.</p>
-            <p class="fragment">The arrow function is testing if each <code style="color: aqua;">item</code> in the input array of <code style="color: aqua;">numbers</code> is evenly divisible by 2.</p>
-            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">evens</code>.</p>
+            <p class="fragment"><code style="color: aqua;">item</code> represents each item in the array of <code style="color: aqua;">numbers</code>.</p>
+            <!-- <p class="fragment">The arrow function is testing if each <code style="color: aqua;">item</code> in the array is evenly divisible by 2.</p> -->
+            <p class="fragment">The returned array of <code style="color: aqua;">evens</code> stores numbers evenly divisible by 2.</p>
         </section>
 
         <section>
-            <h2>Array.prototype.filter()</h2>
+            <h2>.filter()</h2>
             <h3>Return a Match Example</h3>
 <pre class="fragment"><code class="js" data-trim contenteditable>
 // this example helps with finding matches        
@@ -1195,13 +1189,14 @@ const pianos = [
 const findBlue = pianos.filter(piano => piano.color === "blue");
 console.log(findBlue); // [ { color: "blue", name: "Marco" } ]
 </pre></code> 
-            <p class="fragment"><code style="color: aqua;">piano</code> is a name for each item in the <code style="color: aqua;">pianos</code> collection.</p>
-            <p class="fragment">The arrow function tests if each <code style="color: aqua;">piano</code> in the <code style="color: aqua;">pianos</code> collection has a <code style="color: aqua;">color</code> property whose value is <code style="color: aqua;">"blue"</code>.</p>
-            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">findBlue</code>.</p>
+            <p class="fragment"><code style="color: aqua;">piano</code> represents each item in the <code style="color: aqua;">pianos</code> collection.</p>
+            <!-- <p class="fragment">The arrow function tests if each <code style="color: aqua;">piano</code> in the <code style="color: aqua;">pianos</code> collection has a <code style="color: aqua;">color</code> property whose value is <code style="color: aqua;">"blue"</code>.</p> -->
+            <p class="fragment">The returned array is stored in the new variable <code style="color: aqua;">findBlue</code>.</p>
+            <aside class="notes">best practice standard is to name the variable plural and the individual instance as singular</aside>
         </section>
 
         <section>
-            <h2>Array.prototype.filter()</h2>
+            <h2>.filter()</h2>
             <h3>Appointment Reminder Example</h3>
 <pre class="fragment"><code class="js" data-trim contenteditable>
 //get info on who has appointment times before noon (to send reminders)
@@ -1217,29 +1212,32 @@ const patients = [
 const beforeNoon = patients.filter(patient => patient.appointment < 12);
 console.log(beforeNoon); // [ { appointment: 7, name: "Carlos" }, { appointment: 9, name: "Evangeline" }, { appointment: 11, name: "Duncan" } ]
 </pre></code>
-            <p class="fragment"><code style="color: aqua;">patient</code> is a name for each item in the <code style="color: aqua;">patients</code> collection.</p>
-            <p class="fragment">The arrow function tests if each <code style="color: aqua;">patient</code> in <code style="color: aqua;">patients</code> has an <code style="color: aqua;">appointment</code> property whose value is before <code style="color: aqua;">12</code> noon.</p>
-            <p class="fragment">The output array is stored in the new variable <code style="color: aqua;">beforeNoon</code>.</p>
+            <p class="fragment"><code style="color: aqua;">patient</code> represents each item in the <code style="color: aqua;">patients</code> collection.</p>
+            <!-- <p class="fragment">The arrow function tests if each <code style="color: aqua;">patient</code> in <code style="color: aqua;">patients</code> has an <code style="color: aqua;">appointment</code> property whose value is before <code style="color: aqua;">12</code> noon.</p> -->
+            <p class="fragment">The returned array is stored in the new variable <code style="color: aqua;">beforeNoon</code>.</p>
+            <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">MDN Documentation</a>.</p>
         </section>
 
         <section>
-            <h2>Array.prototype.filter()</h2>
-            <h3>Prescription Retrieval Example</h3>
-<pre class="fragment"><code class="js" data-trim contenteditable>
-const drugs = [
-  { username: "Harley", drug: "aspirin" },
-  { username: "Ida", drug: "electrolytes" },
-  { username: "Ladan", drug: "electrolytes" }
+            <h2>Ice Cream Exercise</h2>
+            <p>Given the following collection, please find only the objects with ice cream flavor of "mint chocolate chip".</p>
+<pre><code class="js" data-trim contenteditable>
+const flavors = [
+  { customer: "Harley", flavor: "strawberry" },
+  { customer: "Ida", flavor: "mint chocolate chip" },
+  { customer: "Ladan", flavor: "mint chocolate chip" },
+  { customer: "Marion", flavor: "cookies and creme" }
 ];
 </pre></code> 
-<pre class="fragment"><code class="js" data-trim contenteditable>
+<!-- <pre class="fragment"><code class="js" data-trim contenteditable>
 const minerals = drugs.filter(item => item.drug === "electrolytes");
 console.log(minerals); // [{ drug: "electrolytes", username: "Ida" }, { drug: "electrolytes", username: "Ladan" }]
 </pre></code>
-            <p class="fragment"><code style="color: aqua;">item</code> is a name for each user object in the <code style="color: aqua;">drugs</code> collection.</p>
+            <p class="fragment"><code style="color: aqua;">item</code> represents each user object in the <code style="color: aqua;">drugs</code> collection.</p>
             <p class="fragment">The arrow function tests if each <code style="color: aqua;">item</code> in <code style="color: aqua;">drugs</code> has a <code style="color: aqua;">drug</code> property whose value is <code style="color: aqua;">"electrolytes"</code>.</p>
-            <p class="fragment">The output is stored in the new variable <code style="color: aqua;">minerals</code>.</p>
-            <p class="fragment">See the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">MDN Documentation</a>.</p>
+            <p class="fragment">The output is stored in the new variable <code style="color: aqua;">minerals</code>.</p> -->
+            <a href="https://trello.com/b/RQrD5Ye2" target="_blank"><img width="300" src="images/trello-logo-blue.png" alt="Trello logo"></a>
+            <img src="images/exercise.gif" alt="Exercise Time">
         </section>
 
         <!-- <section>
@@ -1500,12 +1498,12 @@ console.log(statements); //["Himalayan salt is pink", "kosher salt is white",
             </ul>
         </section>
             
-        <section>
+        <!-- <section>
             <h2>Array Methods Exercise</h2>
             <p>Work on this <a href="https://codepen.io/codexmon/pen/yLaObQq?editors=0012" target="_blank">Codepen</a>.</p>
             <a href="https://trello.com/b/RQrD5Ye2" target="_blank"><img width="300" src="images/trello-logo-blue.png" alt="Trello logo"></a>
             <img src="images/exercise.gif" alt="Exercise Time">
-        </section>
+        </section> -->
 
         <section>
             <h2>Array Object in JS Textbook!</h2>
@@ -1539,6 +1537,7 @@ console.log(statements); //["Himalayan salt is pink", "kosher salt is white",
             <p>We covered much on Objects in Object-Oriented JavaScript.</p>
             <p>In addition to Constructor functions, we will encounter Class functions often used to create Class components in JavaScript frameworks.</p>
             <p>Watch this <a href="https://anniecannons.udemy.com/course/javascript-object-oriented-programming/learn/lecture/10020610#overview" target="_blank">short video</a> on Class functions.</p>
+            <aside class="notes">Note: Class in JS is different from CSS classes. Every year JS adds new features, new structures with new syntax to old structures. Learn the concepts, then apply, such as applying for loop to the syntax of a map.</aside>
         </section>
 
         <section>
